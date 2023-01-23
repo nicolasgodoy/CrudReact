@@ -30,7 +30,7 @@ const MostrarUsuarios = () => {
     <div className="container-fluid">
         <div className="row mt-3">
             <div className="col-md-4 offset-md-4">
-                <h1 className="col-md-12 mb-3">Crud con React y Asp.Net</h1>
+                <h1 className="col-md-12 mb-3">Crud con React y Asp.Net..</h1>
                 <div className="d-grid mx-auto">
                     <Link to='/create' className="btn btn-dark">Crear</Link>
                 </div>
