@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const url = "http://www.apiangularapp.somee.com/api/Usuario"
+const url = "http://dominioAngular.somee.com/api/Usuario"
 //const url = "https://localhost:44330/api/Usuario";
 // CREAR METODO POST CREARUSUARIO EN EL BACKEND PARA QUE ME ANDE ACA Y PASARLE CREAR USUARIO EN VEZ DE USUARIO Y LO MISMO PARA DELETE
 

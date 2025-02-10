@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 //const url = "https://localhost:44330/api/Usuario";
-//const url = "http://www.apiangularapp.somee.com/api/Usuario"
+const url = "http://dominioAngular.somee.com/api/Usuario"
 
 const EditarUsuario = () => {
     const[Nombre, setNombre] = useState('');
