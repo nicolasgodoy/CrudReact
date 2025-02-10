@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 //const url = "https://localhost:44330/api/Usuario";
-const url = "http://www.apiangularapp.somee.com/api/Usuario"
+//const url = "http://www.apiangularapp.somee.com/api/Usuario"
 
 const EditarUsuario = () => {
     const[Nombre, setNombre] = useState('');
@@ -24,6 +24,10 @@ const EditarUsuario = () => {
         }
         getUsuario();
     },[])
+
+    const handleVolver = () => {
+        redirect("/"); // Redirige a la grilla en la raíz
+    };
 
     const Editar = async(e) => {
         e.preventDefault();
@@ -47,7 +51,8 @@ const EditarUsuario = () => {
                             <label>Edad</label>
                             <input type="number" id="Edad" maxLength="10" className="form-control" required={true} value={Edad} onChange={(e) => setEdad(e.target.value)}></input>
                         
-                        <button className="btn btn-success mt-3 col-6">Guardar</button>
+                        <button className="btn btn-success mt-3 m-2 col-4">Guardar</button>
+                        <button className="btn btn-dark mt-3 m-2 col-4" onClick={handleVolver}>Volver</button>
                         </form>
                     </div>
                 </div>

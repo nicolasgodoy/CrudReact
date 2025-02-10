@@ -14,11 +14,13 @@ const CrearUsuarios = () => {
 
 
     const store = async(e) => {
-    e.preventDefault();
-    await axios.post(url, {Nombre:Nombre,Apellido:Apellido,Edad:Edad});
-    redirect("/");
-}
+        e.preventDefault();
+        await axios.post(url, {Nombre:Nombre,Apellido:Apellido,Edad:Edad});
+    }
 
+    const handleVolver = () => {
+        redirect("/"); // Redirige a la grilla en la raíz
+    };
 
 
   return (
@@ -36,7 +38,8 @@ const CrearUsuarios = () => {
                             <label>Edad</label>
                             <input type="number" id="Edad" maxLength="10" className="form-control" required={true} value={Edad} onChange={(e) => setEdad(e.target.value)}></input>
                         
-                        <button className="btn btn-success mt-3 col-6">Guardar</button>
+                        <button className="btn btn-success mt-3 m-2 col-4">Guardar</button>
+                        <button className="btn btn-dark mt-3 m-2 col-4" onClick={handleVolver}>Volver</button>
                         </form>
                     </div>
                 </div>
