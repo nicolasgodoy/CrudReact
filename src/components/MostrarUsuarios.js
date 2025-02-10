@@ -3,13 +3,14 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 
 //const url = "https://localhost:44330/api/Usuario";
-const url = "https://www.apiangularapp.somee.com/api/Usuario"
+const url = "http://dominioAngular.somee.com/api/Usuario"
 
 // Terminar de estilizar y intentar subirlo a produccion para ponerlo en el portfolio 
 
 const MostrarUsuarios = () => {
 
     const [usuarios, setUsuarios] = useState([]);
+
     useEffect(() => {
         getUsuarios();
     },[]);
