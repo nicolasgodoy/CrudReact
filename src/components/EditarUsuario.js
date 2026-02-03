@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getUsuarioByIdLocal, updateUsuarioLocal } from "../storageService";
+import { showToast } from "../utils/notifications";
 
 const EditarUsuario = () => {
     const [Nombre, setNombre] = useState('');
@@ -29,6 +30,7 @@ const EditarUsuario = () => {
     const Editar = (e) => {
         e.preventDefault();
         updateUsuarioLocal(ID, { Nombre: Nombre, Apellido: Apellido, Edad: Edad });
+        showToast('success', 'Información actualizada');
         redirect('/');
     }
 

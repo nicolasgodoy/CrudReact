@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getUsuariosLocal, deleteUsuarioLocal } from "../storageService";
+import { confirmDelete, showToast } from "../utils/notifications";
 
 const MostrarUsuarios = () => {
 
@@ -14,9 +15,13 @@ const MostrarUsuarios = () => {
         const data = getUsuariosLocal();
         setUsuarios(data);
     }
-    const deleteUsuarios = (ID) => {
-        deleteUsuarioLocal(ID);
-        getUsuarios();
+    const deleteUsuarios = async (ID, nombre) => {
+        const isConfirmed = await confirmDelete(nombre);
+        if (isConfirmed) {
+            deleteUsuarioLocal(ID);
+            getUsuarios();
+            showToast('success', 'Usuario eliminado');
+        }
     }
 
 
@@ -63,7 +68,7 @@ const MostrarUsuarios = () => {
                                                     <Link to={`/edit/${usuario.ID}`} className="btn btn-modern btn-modern-warning btn-sm me-2">
                                                         Editar
                                                     </Link>
-                                                    <button className="btn btn-modern btn-modern-danger btn-sm" onClick={() => deleteUsuarios(usuario.ID)}>
+                                                    <button className="btn btn-modern btn-modern-danger btn-sm" onClick={() => deleteUsuarios(usuario.ID, `${usuario.Nombre} ${usuario.Apellido}`)}>
                                                         Eliminar
                                                     </button>
                                                 </td>

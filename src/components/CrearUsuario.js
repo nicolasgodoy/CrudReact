@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { saveUsuarioLocal } from "../storageService";
+import { showToast } from "../utils/notifications";
 
 const CrearUsuarios = () => {
     const [Nombre, setNombre] = useState('');
@@ -12,6 +13,7 @@ const CrearUsuarios = () => {
     const store = (e) => {
         e.preventDefault();
         saveUsuarioLocal({ Nombre: Nombre, Apellido: Apellido, Edad: Edad });
+        showToast('success', 'Usuario creado con éxito');
         redirect('/');
     }
 
