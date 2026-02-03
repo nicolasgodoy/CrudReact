@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getUsuarioByIdLocal, updateUsuarioLocal } from "../storageService";
 import { showToast } from "../utils/notifications";
+import { getHoyInputFormat } from "../utils/dateUtils.js";
 
 const EditarUsuario = () => {
     const [Nombre, setNombre] = useState('');
     const [Apellido, setApellido] = useState('');
-    const [Edad, setEdad] = useState('');
+    const [FechaNacimiento, setFechaNacimiento] = useState('');
     const { ID } = useParams();
 
     const redirect = useNavigate(); // TE MANDA A LA UBICACION INICIAL
@@ -17,7 +18,7 @@ const EditarUsuario = () => {
             if (usuario) {
                 setNombre(usuario.Nombre);
                 setApellido(usuario.Apellido);
-                setEdad(usuario.Edad);
+                setFechaNacimiento(usuario.FechaNacimiento || '');
             }
         }
         getUsuario();
@@ -29,7 +30,7 @@ const EditarUsuario = () => {
 
     const Editar = (e) => {
         e.preventDefault();
-        updateUsuarioLocal(ID, { Nombre: Nombre, Apellido: Apellido, Edad: Edad });
+        updateUsuarioLocal(ID, { Nombre: Nombre, Apellido: Apellido, FechaNacimiento: FechaNacimiento });
         showToast('success', 'Información actualizada');
         redirect('/');
     }
@@ -54,8 +55,17 @@ const EditarUsuario = () => {
                                     <input type="text" id="Apellido" maxLength="50" className="form-control" placeholder="Ej. Pérez" required={true} value={Apellido} onChange={(e) => setApellido(e.target.value)} ></input>
                                 </div>
                                 <div className="mb-4">
-                                    <label className="form-label text-secondary small text-uppercase fw-bold">Edad</label>
-                                    <input type="number" id="Edad" className="form-control" placeholder="0" required={true} value={Edad} onChange={(e) => setEdad(e.target.value)}></input>
+                                    <label className="form-label text-secondary small text-uppercase fw-bold">Fecha de Nacimiento</label>
+                                    <input
+                                        type="date"
+                                        id="FechaNacimiento"
+                                        className="form-control"
+                                        required={true}
+                                        max={getHoyInputFormat()}
+                                        value={FechaNacimiento}
+                                        onChange={(e) => setFechaNacimiento(e.target.value)}
+                                        onClick={(e) => e.target.showPicker()}
+                                    ></input>
                                 </div>
 
                                 <div className="d-flex gap-3">

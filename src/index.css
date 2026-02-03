@@ -4,7 +4,6 @@
   --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
   --secondary-gradient: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
   --glass-bg: rgba(15, 23, 42, 0.95);
-  /* Mucho mÃ¡s opaco para mayor contraste */
   --glass-border: rgba(99, 102, 241, 0.4);
   --text-primary: #ffffff;
   --text-secondary: #cbd5e1;
@@ -18,7 +17,6 @@ body {
   margin: 0;
   font-family: 'Outfit', sans-serif;
   background-color: #020617 !important;
-  /* Forzar fondo oscuro */
   background-image:
     radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.15) 0%, transparent 50%) !important;
@@ -57,10 +55,8 @@ body {
 .btn-modern-warning {
   background: var(--warning-color);
   color: #000;
-  /* Texto negro sobre amarillo para contraste */
 }
 
-/* Mejora de visibilidad de labels e inputs */
 .form-label {
   color: var(--accent-color) !important;
   font-weight: 700 !important;
@@ -96,17 +92,110 @@ body {
   font-weight: 500;
   color: var(--text-primary) !important;
 }
-/* Optimización Mobile */
+
 @media (max-width: 768px) {
-  .display-4 { font-size: 2rem !important; }
-  .container { padding-left: 15px; padding-right: 15px; }
-  .glass-card { padding: 1rem !important; border-radius: 16px; }
-  .btn-modern { padding: 10px 16px; font-size: 0.75rem; width: 100%; margin: 5px 0; }
-  .d-flex.gap-3 { flex-direction: column; gap: 10px !important; }
-  .table-responsive { border: none !important; overflow: visible !important; }
-  .table thead { display: none; }
-  .table tbody tr { display: block; margin-bottom: 1.5rem; border: 1px solid var(--glass-border); border-radius: 12px; padding: 10px; background: rgba(255, 255, 255, 0.02); }
-  .table td { display: flex; justify-content: space-between; align-items: center; text-align: right !important; padding: 10px 5px !important; border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important; min-height: 45px; }
-  .table td::before { content: attr(data-label); font-weight: 700; color: var(--accent-color); text-transform: uppercase; font-size: 0.7rem; padding-right: 10px; text-align: left; }
-  .table td:last-child { border-bottom: none !important; justify-content: center; gap: 10px; padding-top: 15px !important; flex-wrap: wrap; }
+  .display-4 {
+    font-size: 2rem !important;
+  }
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .glass-card {
+    padding: 1rem !important;
+    border-radius: 16px;
+  }
+
+  .btn-modern {
+    padding: 10px 16px;
+    font-size: 0.75rem;
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .d-flex.gap-3 {
+    flex-direction: column;
+    gap: 10px !important;
+  }
+
+  .table-responsive {
+    border: none !important;
+    overflow: visible !important;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tbody tr {
+    display: block;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right !important;
+    padding: 10px 5px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    min-height: 45px;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    padding-right: 10px;
+    text-align: left;
+  }
+
+  .table td:last-child {
+    border-bottom: none !important;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 15px !important;
+    flex-wrap: wrap;
+  }
+}
+
+/* Custom Datepicker & Form Improvements */
+input[type="date"] {
+  color-scheme: dark;
+  background: #0f172a !important;
+  border: 1px solid var(--glass-border) !important;
+  color: #ffffff !important;
+  padding: 15px !important;
+  border-radius: 12px !important;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8) sepia(100%) saturate(1000%) hue-rotate(150deg);
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  margin-right: 5px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  filter: invert(1) sepia(100%) saturate(2000%) hue-rotate(180deg);
+}
+
+.form-control:focus {
+  background: #1e293b !important;
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.15) !important;
+  outline: none;
 }
